@@ -15,19 +15,19 @@ spec:
       containers:
         - name: prometheus
           image: prom/prometheus:v2.30.3
-          args:
-            - "--config.file=/etc/prometheus/prometheus.yml"
+          #args:
+          #  - "--config.file=/etc/prometheus/prometheus.yml"
           ports:
             - containerPort: 9090
           volumeMounts:
             - name: pvc-dynamic
               mountPath: /mnt/user/appdata/prometheus/data
-            - name: config-volume
-              mountPath: /etc/prometheus
+            #- name: config-volume
+            #  mountPath: /etc/prometheus
       volumes:
         - name: pvc-dynamic
           persistentVolumeClaim:
             claimName: pvc-dynamic
-        - name: config-volume
-          configMap:
-            name: prometheus-config
+        #- name: config-volume
+        #  configMap:
+        #    name: prometheus-server-conf
